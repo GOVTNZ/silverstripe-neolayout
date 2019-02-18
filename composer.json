@@ -1,22 +1,25 @@
 {
-    "name": "mrmorphic/neolayout",
+    "name": "govtnz/silverstripe-neolayout",
     "description": "Dynamic layout using components",
     "license": "MIT",
     "type": "silverstripe-module",
     "keywords": ["silverstripe", "layout", "component"],
     "authors": [{
-            "name": "Mark Stephens",
-            "email": "mr.morphic@gmail.com"
-        },
-        {
-            "name": "David Craig",
-            "email": "david@silverstripe.com"
-        }
-    ],
+      "name": "Govt.nz",
+      "email": "govtnz@dia.govt.nz"
+    }],
     "require": {
-        "silverstripe/framework": ">=3.0.0"
+        "silverstripe/framework": "^4",
+        "silverstripe/cms": "^4"
+    },
+    "autoload": {
+        "psr-4": {
+            "GovtNZ\\SilverStripe\\NeoLayout": "src"
+        }
     },
     "extra": {
-        "installer-name": "neolayout"
+      "branch-alias": {
+        "dev-master": "2.x-dev"
+      }
     }
 }
