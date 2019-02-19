@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "GovtNZ\\SilverStripe\\NeoLayout": "src"
+            "GovtNZ\\SilverStripe\\NeoLayout\\": "src"
         }
     },
     "extra": {
