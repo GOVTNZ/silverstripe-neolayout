@@ -2,7 +2,7 @@
     "name": "govtnz/silverstripe-neolayout",
     "description": "Dynamic layout using components",
     "license": "MIT",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "keywords": ["silverstripe", "layout", "component"],
     "authors": [{
       "name": "Govt.nz",
