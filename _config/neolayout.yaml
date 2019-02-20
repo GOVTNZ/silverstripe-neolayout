@@ -1,10 +1,9 @@
 ---
 name: neolayout
-#after: '*'
 ---
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   extra_requirements_javascript:
-    - neolayout/javascript/dist/app.js
+    - govtnz/neolayout:client/javascript/dist/app.js
 
   extra_requirements_css:
     - neolayout/css/dist/main.css

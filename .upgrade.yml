@@ -1,0 +1,21 @@
+mappings:
+  NLViewTest: GovtNZ\SilverStripe\NeoLayout\NLViewTest
+  NLComponentTest: GovtNZ\SilverStripe\NeoLayout\NLComponentTest
+  NLLayoutManager: GovtNZ\SilverStripe\NeoLayout\NLLayoutManager
+  NLBootstrapLayoutManager: GovtNZ\SilverStripe\NeoLayout\NLBootstrapLayoutManager
+  NLEditableLayoutPage: GovtNZ\SilverStripe\NeoLayout\NLEditableLayoutPage
+  NLEditableLayoutPage_Controller: GovtNZ\SilverStripe\NeoLayout\NLEditableLayoutPage_Controller
+  NLVerticalBoxLayout: GovtNZ\SilverStripe\NeoLayout\NLVerticalBoxLayout
+  NLInlineLayout: GovtNZ\SilverStripe\NeoLayout\NLInlineLayout
+  NLLayoutComponent: GovtNZ\SilverStripe\NeoLayout\NLLayoutComponent
+  NLHorizontalBoxLayout: GovtNZ\SilverStripe\NeoLayout\NLHorizontalBoxLayout
+  NLLayoutContainer: GovtNZ\SilverStripe\NeoLayout\NLLayoutContainer
+  NLCMSLayoutEditorField: GovtNZ\SilverStripe\NeoLayout\NLCMSLayoutEditorField
+  NLLinkComponent: GovtNZ\SilverStripe\NeoLayout\NLLinkComponent
+  NLImageComponent: GovtNZ\SilverStripe\NeoLayout\NLImageComponent
+  NLTextComponent: GovtNZ\SilverStripe\NeoLayout\NLTextComponent
+  NLObjectReference: GovtNZ\SilverStripe\NeoLayout\NLObjectReference
+  NLView: GovtNZ\SilverStripe\NeoLayout\NLView
+  NLViewAddableItem: GovtNZ\SilverStripe\NeoLayout\NLViewAddableItem
+  NLComponent: GovtNZ\SilverStripe\NeoLayout\NLComponent
+  NLBindingDefinition: GovtNZ\SilverStripe\NeoLayout\NLBindingDefinition

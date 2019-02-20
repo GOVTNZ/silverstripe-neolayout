@@ -1,13 +1,17 @@
 <?php
 
+namespace GovtNZ\SilverStripe\NeoLayout\View;
+
 /**
  * layout container component, which logically acts the top-level container for a layout.
  * When an NLView is constructed, this component is always at the top of the hierarchy,
  * It should not be removed, and new instances should not be added as childen.
  */
-class NLLayoutContainer extends NLLayoutComponent {
+class NLLayoutContainer extends NLLayoutComponent
+{
 
-    static public function get_metadata() {
+    public static function get_metadata()
+    {
         return array(
             "name" => "Layout container",
             "description" => "Top-level container for a layout area",
@@ -15,7 +19,8 @@ class NLLayoutContainer extends NLLayoutComponent {
         );
     }
 
-    function renderContent($context) {
+    function renderContent($context)
+    {
         $content = "";
         $i = 0;
         if ($this->children) {
