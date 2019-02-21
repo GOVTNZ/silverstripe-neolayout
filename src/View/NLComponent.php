@@ -6,6 +6,7 @@ use SilverStripe\View\ViewableData;
 use Exception;
 use stdClass;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\View\ArrayData;
 
 /**
@@ -101,6 +102,11 @@ abstract class NLComponent extends ViewableData
         }
 
         $className = $object->ClassName;
+
+        if (!class_exists($className)) {
+            $className = 'GovtNZ\SilverStripe\NeoLayout\View\\'. $className;
+        }
+
         $real = new $className($object);
 
         // Store the raw bindings for later, only interpret this on demand.
@@ -187,12 +193,16 @@ abstract class NLComponent extends ViewableData
         $class = get_class($this);
         $result = array();
         while ($class) {
-            $d = $class::get_metadata();
-            foreach ($d as $key => $value) {
-                if (!isset($result[$key])) {
-                    $result[$key] = $value;
+            if (method_exists($class, 'get_metadata')) {
+                $d = $class::get_metadata();
+
+                foreach ($d as $key => $value) {
+                    if (!isset($result[$key])) {
+                        $result[$key] = $value;
+                    }
                 }
             }
+
             if ($class == "NLComponent") {
                 $class = null;
             } else {
@@ -453,10 +463,10 @@ class NLBindingDefinition
      * @return DBField      Returns a subclass of DB field, as defined by getProperties for the class,
      *                      with the value assigned, or null if unbound.
      */
-    function getValue($context)
+    public function getValue($context)
     {
         $type = $this->getBaseType($this->propertyDef['type']);
-        $inst = Object::create_from_string($type, $this->propertyName);
+        $inst = Injector::inst()->create($type, $this->propertyName);
         $inst->setValue($this->value);
         switch ($this->type) {
             case NLBindingDefinition::BIND_EMBEDDED:

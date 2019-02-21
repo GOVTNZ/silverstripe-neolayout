@@ -3,7 +3,7 @@ name: neolayout
 ---
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_javascript:
-    - govtnz/neolayout:client/javascript/dist/app.js
+    - govtnz/silverstripe-neolayout:client/javascript/dist/app.js
 
   extra_requirements_css:
-    - neolayout/css/dist/main.css
+    - govtnz/silverstripe-neolayout:client/css/dist/main.css

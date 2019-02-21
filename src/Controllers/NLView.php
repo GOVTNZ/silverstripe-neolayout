@@ -3,7 +3,7 @@
 namespace GovtNZ\SilverStripe\NeoLayout\Controllers;
 
 use SilverStripe\Control\Controller;
-use SilverStripe\Core\Config;
+use SilverStripe\Core\Config\Config;
 use Exception;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\View\Requirements;
@@ -11,6 +11,7 @@ use SilverStripe\View\ArrayData;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\View\ViewableData;
+use GovtNZ\SilverStripe\NeoLayout\View\NLComponent;
 
 /**
  * NLView represents an area on a page or a view which is to provide a component based presentation. It is capable
@@ -36,7 +37,7 @@ class NLView extends Controller
 
     static $default_view_contents =
         '{
-            "ClassName": "NLLayoutContainer",
+            "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLLayoutContainer",
             "children": [
             ],
             "bindings": {
@@ -46,10 +47,10 @@ class NLView extends Controller
     // This should really be in the test suite.
     static $default_view_contents_alt =
         '{
-            "ClassName": "NLLayoutContainer",
+            "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLLayoutContainer",
             "children": [
                 {
-                    "ClassName": "NLTextComponent",
+                    "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLTextComponent",
                     "bindings": {
                         "Text": {
                             "type": "embedded",
@@ -58,7 +59,7 @@ class NLView extends Controller
                     }
                 },
                 {
-                    "ClassName": "NLLinkComponent",
+                    "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLLinkComponent",
                     "bindings": {
                         "ExternalURL": {
                             "type": "embedded",
@@ -67,7 +68,7 @@ class NLView extends Controller
                     },
                     "children": [
                         {
-                            "ClassName": "NLTextComponent",
+                            "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLTextComponent",
                             "bindings": {
                                 "Text": {
                                     "type": "embedded",
@@ -78,7 +79,7 @@ class NLView extends Controller
                     ]
                 },
                 {
-                    "ClassName": "NLTextComponent",
+                    "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLTextComponent",
                     "bindings": {
                         "Text": {
                             "type": "context",
@@ -94,16 +95,16 @@ class NLView extends Controller
     // This should really be in the test suite.
     static $default_view_contents_alt2 =
         '{
-            "ClassName": "NLLayoutContainer",
+            "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLLayoutContainer",
             "children": [
                 {
-                    "ClassName": "NLVerticalBoxLayout",
+                    "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLVerticalBoxLayout",
                     "children": [
                         {
-                            "ClassName": "NLHorizontalBoxLayout",
+                            "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLHorizontalBoxLayout",
                             "children": [
                                 {
-                                    "ClassName": "NLLinkComponent",
+                                    "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLLinkComponent",
                                     "bindings": {
                                         "ExternalURL": {
                                             "type": "embedded",
@@ -115,7 +116,7 @@ class NLView extends Controller
                                     },
                                     "children": [
                                         {
-                                            "ClassName": "NLImageComponent",
+                                            "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLImageComponent",
                                             "bindings": {
                                                 "InternalImage": {
                                                     "type": "embedded",
@@ -138,7 +139,7 @@ class NLView extends Controller
                                     ]
                                 },
                                 {
-                                    "ClassName": "NLTextComponent",
+                                    "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLTextComponent",
                                     "bindings": {
                                         "Text": {
                                             "type": "embedded",
@@ -152,7 +153,7 @@ class NLView extends Controller
                             ]
                         },
                         {
-                            "ClassName": "NLTextComponent",
+                            "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLTextComponent",
                             "bindings": {
                                 "Text": {
                                     "type": "embedded",
@@ -171,10 +172,10 @@ class NLView extends Controller
 
     static $default_view_contents_old =
         '{
-            "ClassName": "NLVerticalBoxLayout",
+            "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLVerticalBoxLayout",
             "children": [
                 {
-                    "ClassName": "NLTextComponent",
+                    "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLTextComponent",
                     "bindings": {
                         "Text": {
                             "type": "embedded",
@@ -183,7 +184,7 @@ class NLView extends Controller
                     }
                 },
                 {
-                    "ClassName": "NLLinkComponent",
+                    "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLLinkComponent",
                     "bindings": {
                         "ExternalURL": {
                             "type": "embedded",
@@ -192,7 +193,7 @@ class NLView extends Controller
                     },
                     "children": [
                         {
-                            "ClassName": "NLTextComponent",
+                            "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLTextComponent",
                             "bindings": {
                                 "Text": {
                                     "type": "embedded",
@@ -203,7 +204,7 @@ class NLView extends Controller
                     ]
                 },
                 {
-                    "ClassName": "NLLinkComponent",
+                    "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLLinkComponent",
                     "bindings": {
                         "InternalPage": {
                             "type": "embedded",
@@ -212,7 +213,7 @@ class NLView extends Controller
                     },
                     "children": [
                         {
-                            "ClassName": "NLTextComponent",
+                            "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLTextComponent",
                             "bindings": {
                                 "Text": {
                                     "type": "embedded",
@@ -223,10 +224,10 @@ class NLView extends Controller
                     ]
                 },
                 {
-                    "ClassName": "NLCanvasLayout",
+                    "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLCanvasLayout",
                     "children":[
                         {
-                            "ClassName": "NLTextComponent",
+                            "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLTextComponent",
                             "bindings": {
                                 "Text": {
                                     "type": "embedded",
@@ -236,7 +237,7 @@ class NLView extends Controller
                             "layout": { "top":"10px", "height":"15px", "width":"20px" }
                         },
                         {
-                            "ClassName": "NLTextComponent",
+                            "ClassName": "GovtNZ\SilverStripe\NeoLayout\View\NLTextComponent",
                             "bindings": {
                                 "Text": {
                                     "type": "embedded",
@@ -317,8 +318,6 @@ class NLView extends Controller
      */
     public function forTemplate()
     {
-        Requirements::css("neolayout/css/nlcore.css");
-
         $layout = $this->getLayout();
 
         $extraClasses = array();
@@ -337,7 +336,7 @@ class NLView extends Controller
     {
         $items = new ArrayList();
 
-        $subclasses = ClassInfo::subclassesFor("NLComponent");
+        $subclasses = ClassInfo::subclassesFor(NLComponent::class);
 
         // Remove abstracts
         // @todo do this programmatically
