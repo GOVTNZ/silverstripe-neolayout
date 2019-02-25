@@ -12,6 +12,7 @@ use SilverStripe\ORM\ArrayList;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\View\ViewableData;
 use GovtNZ\SilverStripe\NeoLayout\View\NLComponent;
+use GovtNZ\SilverStripe\NeoLayout\View\NLViewAddableItem;
 
 /**
  * NLView represents an area on a page or a view which is to provide a component based presentation. It is capable
@@ -31,8 +32,11 @@ class NLView extends Controller
     private static $layout_manager_class = null;
 
     protected $layout = null;
+
     protected $rawComponents;
+
     protected $context;
+
     protected $layoutManager;
 
     static $default_view_contents =
@@ -388,27 +392,4 @@ class NLView extends Controller
 
     //  return $form;
     // }
-}
-
-class NLViewAddableItem extends ViewableData
-{
-    /**
-     * @param $name
-     * @param $description
-     * @param $imageURL
-     * @param $type         type of thing. e.g. NLLinkComponent, File, Image
-     * @param $objectClass
-     * @param $objectID
-     * @param $ID           ID of object if it is an object (not valid for components)
-     */
-    function __construct($name, $description, $imageURL, $type, $objectClass = null, $objectID = null, $objectBinding = null)
-    {
-        $this->name = $name;
-        $this->description = $description;
-        $this->imageURL = $imageURL;
-        $this->type = $type;
-        $this->objectClass = $objectClass;
-        $this->objectID = $objectID;
-        $this->objectBinding = $objectBinding;
-    }
 }

@@ -2,8 +2,11 @@
 
 namespace GovtNZ\SilverStripe\NeoLayout\View;
 
+use SilverStripe\ORM\FieldType\DBField;
+
 /**
- * Box layout component, which implements a simple horizontal box for laying out its children.
+ * Box layout component, which implements a simple horizontal box for laying
+ * out its children.
  */
 class NLHorizontalBoxLayout extends NLLayoutComponent
 {
@@ -17,14 +20,21 @@ class NLHorizontalBoxLayout extends NLLayoutComponent
         );
     }
 
-    function renderContent($context)
+    public function renderContent($context)
     {
         $content = "";
         if ($this->children) {
             foreach ($this->children as $child) {
-                $content .= $child->render($context);
+                $renderedChild = $child->render($context);
+
+                if (is_string($renderedChild)) {
+                    $content .= $renderedChild;
+                } else {
+                    $content .= $renderedChild->RAW();
+                }
             }
         }
-        return $content;
+
+        return DBField::create_field('HTMLText', $content);
     }
 }

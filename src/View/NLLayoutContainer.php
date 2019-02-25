@@ -2,6 +2,8 @@
 
 namespace GovtNZ\SilverStripe\NeoLayout\View;
 
+use SilverStripe\ORM\FieldType\DBField;
+
 /**
  * layout container component, which logically acts the top-level container for a layout.
  * When an NLView is constructed, this component is always at the top of the hierarchy,
@@ -19,21 +21,35 @@ class NLLayoutContainer extends NLLayoutComponent
         );
     }
 
-    function renderContent($context)
+    public function renderContent($context)
     {
         $content = "";
         $i = 0;
+
         if ($this->children) {
             foreach ($this->children as $child) {
                 $temp = $this->extend('updateRenderContent', $i);
+
                 if (!empty($temp)) {
-                    $content .= $temp[0];
+                    if (is_string($temp[0])) {
+                        $content .= $temp[0];
+                    } else {
+                        $content .= $temp[0]->RAW();
+                    }
                 }
 
-                $content .= $child->render($context);
+                $renderedChild = $child->render($context);
+
+                if (is_string($renderedChild)) {
+                    $content .= $renderedChild;
+                } else {
+                    $content .= $renderedChild->RAW();
+                }
+
                 $i++;
             }
         }
-        return $content;
+
+        return DBField::create_field('HTMLText', $content);
     }
 }

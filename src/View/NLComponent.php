@@ -85,6 +85,10 @@ abstract class NLComponent extends ViewableData
      */
     protected $view;
 
+    private static $casting = [
+        'renderContent' => 'HTMLText'
+    ];
+
     /**
      * Given an NLComponent object hierarchy, generate the actual NLComponent instances. The object passed in
      * is an object structure that is a deserialised json object, so the objects are untyped. We use the ClassName

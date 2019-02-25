@@ -7,7 +7,6 @@ namespace GovtNZ\SilverStripe\NeoLayout\View;
  */
 abstract class NLLayoutComponent extends NLComponent
 {
-
     function maxChildren()
     {
         return "*";
