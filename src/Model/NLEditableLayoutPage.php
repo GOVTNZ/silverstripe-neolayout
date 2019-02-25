@@ -2,6 +2,7 @@
 
 namespace GovtNZ\SilverStripe\NeoLayout\Model;
 
+use GovtNZ\SilverStripe\NeoLayout\Forms\NLCMSLayoutEditorField;
 use Page;
 
 /**

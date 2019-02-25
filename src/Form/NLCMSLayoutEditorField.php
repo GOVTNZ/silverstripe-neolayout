@@ -67,8 +67,11 @@ class NLCMSLayoutEditorField extends HiddenField
         return Convert::raw2xml($s);
     }
 
-    // Inject a javascript variable that contains the definition of the components.
-    function ComponentTypeMetadata()
+    /**
+     * Inject a javascript variable that contains the definition of the
+     * components.
+     */
+    public function ComponentTypeMetadata()
     {
         $js = "[\n";
 
@@ -88,7 +91,7 @@ class NLCMSLayoutEditorField extends HiddenField
             $metadata = $inst->getMetadata();
 
             if (!$metadata['imageURL']) {
-                $metadata['imageURL'] = 'neolayout/images/unknown-component.png';
+                $metadata['imageURL'] = 'resources/govtnz/silverstripe-neolayout/client/images/unknown-component.png';
             }
 
             $metadata["componentType"] = $class;
