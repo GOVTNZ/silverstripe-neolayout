@@ -5,7 +5,9 @@ namespace GovtNZ\SilverStripe\NeoLayout\Forms;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\ClassInfo;
+use SilverStripe\ORM\DataObject;
 use ReflectionClass;
+use GovtNZ\SilverStripe\NeoLayout\View\NLComponent;
 
 // Layout editor field for CMS. This can be used if the layout is defined on a page, and we want the CMS editor
 // to be able to define the layout.
@@ -75,10 +77,10 @@ class NLCMSLayoutEditorField extends HiddenField
     {
         $js = "[\n";
 
-        $classes = ClassInfo::subclassesFor("NLComponent");
+        $classes = ClassInfo::subclassesFor(NLComponent::class);
 
         foreach ($classes as $class) {
-            if (in_array($class, array("NLComponent"))) {
+            if (in_array($class, [NLComponent::class])) {
                 continue;
             }
 
@@ -106,8 +108,13 @@ class NLCMSLayoutEditorField extends HiddenField
         return $js;
     }
 
-    // Compute a JSON structure that tells the editor what is available in the context.
-    function ContextMetadata()
+    /**
+     * Compute a JSON structure that tells the editor what is available in the
+     * context.
+     *
+     * @return string
+     */
+    public function ContextMetadata()
     {
         // Get a map of field names mapping to metadata about the property
         $contextMetadata = $this->deriveContextMetadata();
@@ -133,19 +140,22 @@ class NLCMSLayoutEditorField extends HiddenField
             return $this->contextInstance->getNLContextMetadata();
         }
 
-        if (!(is_subclass_of($this->contextInstance, 'DataObject'))) {
+        if (!(is_subclass_of($this->contextInstance, DataObject::class))) {
             return array();
         }
 
-        // OK, we have a data object. Get all the fields. Strip out system fields and the field we're editing. And return that.
+        // OK, we have a data object. Get all the fields. Strip out system
+        // fields and the field we're editing. And return that.
         $result = array();
         $fields = $this->contextInstance->db();
 
         foreach ($fields as $key => $value) {
-            // Certain types need manipulation, especially lengths, which we don't care about.
+            // Certain types need manipulation, especially lengths, which we
+            // don't care about.
             if (substr($value, 0, 8) == 'Varchar(') {
                 $value = 'Varchar';
             }
+
             $result[$key] = $value;
         }
 

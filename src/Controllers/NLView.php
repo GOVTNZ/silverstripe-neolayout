@@ -344,8 +344,8 @@ class NLView extends Controller
 
         // Remove abstracts
         // @todo do this programmatically
-        unset($subclasses["NLComponent"]);
-        unset($subclasses["NLLayoutComponent"]);
+        unset($subclasses[NLComponent::class]);
+        unset($subclasses[NLLayoutComponent::class]);
 
         // @todo let context filter component types
         if ($this->context && $this->context->hasMethod("filterComponents")) {

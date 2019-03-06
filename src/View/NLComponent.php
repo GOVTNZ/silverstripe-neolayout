@@ -207,7 +207,7 @@ abstract class NLComponent extends ViewableData
                 }
             }
 
-            if ($class == "NLComponent") {
+            if ($class == NLComponent::class) {
                 $class = null;
             } else {
                 $class = get_parent_class($class);
