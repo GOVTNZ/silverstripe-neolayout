@@ -258,7 +258,7 @@ abstract class NLComponent extends ViewableData
     }
 
     /**
-     * @param object    $context
+     * @param object $context
      * @return ViewableData     Maps properties to actual values. Uses NLBindingDefinition to determine where the value
      *                          comes from, using context. Tolerant of errors.
      */
