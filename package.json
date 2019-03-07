@@ -28,30 +28,30 @@
   },
   "homepage": "https://github.com/mrmorphic/silverstripe-neolayout",
   "devDependencies": {
-    "browserify": "^7.0.0",
+    "browserify": "^7.1.0",
     "es6-promise": "^2.3.0",
-    "flux": "^2.0.3",
+    "flux": "^2.1.1",
     "jest-cli": "^0.4.0",
     "jsdoc-to-markdown": "^0.5.9",
-    "node-uuid": "^1.4.1",
+    "node-uuid": "^1.4.8",
     "object-assign": "^3.0.0",
-    "react": "^0.12.1",
+    "react": "^0.12.2",
     "react-tools": "^0.13.3",
     "reactify": "^1.1.1",
     "stylus": "^0.50.0",
-    "uglifyjs": "^2.4.10"
+    "uglifyjs": "^2.4.11"
   },
   "scripts": {
-    "build:css:dev": "stylus ./css/src/main.styl --out ./css/dist/main.css",
-    "build:css:prod": "stylus ./css/src/main.styl --compress --out ./css/dist/main.css",
-    "build:js:dev": "browserify -t reactify ./javascript/src/app.js > ./javascript/dist/app.js",
-    "build:js:prod": "browserify -t reactify ./javascript/src/app.js | uglifyjs --mangle --output javascript/dist/app.js",
+    "build:css:dev": "stylus ./client/css/src/main.styl --out ./client/css/dist/main.css",
+    "build:css:prod": "stylus ./client/css/src/main.styl --compress --out ./client/css/dist/main.css",
+    "build:js:dev": "browserify -t reactify ./client/javascript/src/app.js > ./client/javascript/dist/app.js",
+    "build:js:prod": "browserify -t reactify ./client/javascript/src/app.js | uglifyjs --mangle --output ./client/javascript/dist/app.js",
     "build:all:dev": "npm run build:css:dev && npm run build:js:dev",
     "build:all:prod": "npm run build:css:prod && npm run build:js:prod",
-    "docs": "jsx --no-cache-dir ./javascript/src ./tmp && jsdoc2md ./tmp/**/*.js > docs/client_app_reference.md && rm -rf ./tmp",
+    "docs": "jsx --no-cache-dir ./client/javascript/src ./tmp && jsdoc2md ./tmp/**/*.js > docs/client_app_reference.md && rm -rf ./tmp",
     "test": "jest"
   },
   "jest": {
-    "rootDir": "./javascript/src"
+    "rootDir": "./client/javascript/src"
   }
 }
