@@ -329,7 +329,7 @@ class NLView extends Controller
         // render
         return $this->customise(
             new ArrayData(array(
-                "Layout" => $layout->render($this->context),
+                "Layout" => ($layout) ? $layout->render($this->context) : '',
                 "ExtraClasses" => implode(" ", $extraClasses),
                 "URL" => $this->parentController->Link($this->viewName)
             ))

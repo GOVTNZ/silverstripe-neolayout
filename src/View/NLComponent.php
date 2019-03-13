@@ -102,7 +102,7 @@ abstract class NLComponent extends ViewableData
     public static function factory($object, $view)
     {
         if (!isset($object->ClassName)) {
-            throw new Exception("NLComponent has no class information");
+            return false;
         }
 
         $className = $object->ClassName;
