@@ -268,6 +268,7 @@ abstract class NLComponent extends ViewableData
             // We don't have values, let's get them.
             $this->bindingValues = new ViewableData();
             $bindings = $this->getBindingDefinitions();
+
             foreach ($bindings as $property => $bindingDef) {
                 $this->bindingValues->$property = $bindingDef->getValue($context);
             }
