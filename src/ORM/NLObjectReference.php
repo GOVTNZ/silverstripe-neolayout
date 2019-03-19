@@ -28,6 +28,8 @@ class NLObjectReference extends DBVarchar
             case 'SiteTree':
                 $parts[0] = 'SilverStripe\CMS\Model\SiteTree';
                 break;
+            case 'Member':
+                $parts[0] = 'SilverStripe\Security\Member';
         }
 
         if (!ClassInfo::exists($parts[0])) {
