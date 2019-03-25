@@ -7,15 +7,16 @@ namespace GovtNZ\SilverStripe\NeoLayout\View;
  */
 abstract class NLLayoutComponent extends NLComponent
 {
-    function maxChildren()
+    public function maxChildren()
     {
         return "*";
     }
 
-    function containerClasses($context)
+    public function containerClasses($context)
     {
         $a = parent::containerClasses($context);
         $a[] = "layout-container";
+
         return $a;
     }
 }

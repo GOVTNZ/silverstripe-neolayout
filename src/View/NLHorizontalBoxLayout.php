@@ -20,6 +20,14 @@ class NLHorizontalBoxLayout extends NLLayoutComponent
         );
     }
 
+    public function containerClasses($context)
+    {
+        $a = parent::containerClasses($context);
+        $a[] = "row";
+
+        return $a;
+    }
+
     public function renderContent($context)
     {
         $content = "";
