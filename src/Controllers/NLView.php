@@ -289,7 +289,7 @@ class NLView extends Controller
         if ($layoutManager) {
             $this->layoutManager = $layoutManager;
         } else {
-            $klass = Config::inst()->get('NLView', 'layout_manager_class');
+            $klass = $this->config()->get('layout_manager_class');
             if (!$klass) {
                 throw new Exception("NLView needs a layout manager. Either pass one in, or set it up in config. See module documentation");
             }
